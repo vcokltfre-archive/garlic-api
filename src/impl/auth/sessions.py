@@ -84,4 +84,6 @@ class KeyManager:
         except KeyError:
             return
 
+        del self._handoff[token]  # type: ignore
+
         return await self.create(user_id, datetime.utcnow(), datetime.utcnow() + timedelta(days=7))
